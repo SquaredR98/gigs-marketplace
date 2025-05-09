@@ -2,7 +2,7 @@
 services:
   redis:
     # name of the service - helps tracking the services easily
-    container_name: redis_container
+    container_name: redis
     # alpine is for light weight container
     image: redis:alpine
     # always restart if the container fails
@@ -15,7 +15,7 @@ services:
       # we are creating volumes to store the data in container. the syntax says map /data from redis to ./docker/cache directory
       - ./docker-volumes/cache:/data
   mongodb:
-    container_name: mongodb_container
+    container_name: mongodb
     image: mongo:latest
     restart: always
     ports:
@@ -23,9 +23,9 @@ services:
     volumes:
       - ./docker-volumes/data:/data/db
   mysql:
-    container_name: mysql_container
+    container_name: mysql
     image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+    # command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_USER: mysql_user
@@ -37,7 +37,7 @@ services:
     volumes:
       - ./docker-volumes/mysql:/var/lib/mysql
   postgres:
-    container_name: psql_container
+    container_name: psql
     image: postgres
     restart: always
     environment:
@@ -49,7 +49,7 @@ services:
     volumes:
       - ./docker-volumes/postgres:/var/lib/postgresql
   rabbitmq:
-    container_name: rabbitmq_container
+    container_name: rabbitmq
     image: rabbitmq:4.1-rc-management-alpine
     restart: always
     ports:
@@ -58,17 +58,17 @@ services:
       # Management Ports: For accessing rmq dashboard
       - 15672:15672
   elasticsearch:
-    container_name: es_container
+    container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:8.17.4
     restart: always
     environment:
       ES_JAVA_OPTS: -Xmx1g -Xms1g
       bootstrap.memory_lock: true
-      discovery.type: signle-node
+      discovery.type: single-node
       xpack.security.enabled: false
       xpack.security.authc.api_key.enabled: true
       xpack.monitoring.collection.enabled: true
-      xpack.security.enrolment.enabled: true
+      xpack.security.enrollment.enabled: true
     ports:
       - 9200:9200
     volumes:
@@ -76,11 +76,11 @@ services:
     networks:
       - elastic
   kibana:
-    container_name: kibana_container
+    container_name: kibana
     image: docker.elastic.co/kibana/kibana:8.17.4
     restart: always
     environment:
-      - ELASTICSEARCH_HOSTS=["http://elasticsearch_container:9200"]
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]
     ports:
       - 5601:5601
     networks:

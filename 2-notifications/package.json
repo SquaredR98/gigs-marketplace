@@ -4,7 +4,8 @@
   "description": "Notifications service for the gigs marketplace platform built using complete pure mocroservices pattern",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon -r tsconfig-paths/register src/index.ts | pino-pretty -c",
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json"
   },
   "keywords": [
     "nodejs",
@@ -23,6 +24,13 @@
     "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "typescript": "^5.8.3",
+    "typescript-transform-paths": "^3.5.5"
   }
 }

@@ -1,0 +1,28 @@
+{
+  "name": "notifications",
+  "version": "1.0.0",
+  "description": "Notifications service for the gigs marketplace platform built using complete pure mocroservices pattern",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "jsvascript",
+    "mongodb",
+    "postgresql",
+    "elasticsearch",
+    "docker",
+    "rabbitmq"
+  ],
+  "author": "Ravi Ranjan",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "prettier": "^3.5.3"
+  }
+}
